@@ -1,0 +1,18 @@
+package pbtest;
+
+option java_outer_classname = "DataPointProtos";
+
+message DataPoint {
+	required string metric = 1;
+	required int64 timestamp = 2;
+	
+	optional float fvalue = 3;
+	optional sint32 ivalue = 4;
+	
+	message Tag {
+		required string key = 1;
+		required string value = 2;
+	}
+	
+	repeated Tag tag = 5;
+}
