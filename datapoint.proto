@@ -2,17 +2,23 @@ package pbtest;
 
 option java_outer_classname = "DataPointProtos";
 
+message Header {
+	repeated string value = 1;
+}
+
 message DataPoint {
-	required string metric = 1;
+	required int32 metric_id = 1;
 	required int64 timestamp = 2;
 	
+	// use oneof for {fvalue, ivalue}
 	optional float fvalue = 3;
 	optional sint32 ivalue = 4;
 	
 	message Tag {
-		required string key = 1;
-		required string value = 2;
+		required int32 key_id = 1;
+		required int32 value_id = 2;
 	}
 	
+	// should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
 	repeated Tag tag = 5;
 }

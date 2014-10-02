@@ -14,16 +14,19 @@ import java.util.Map;
 import org.hbase.async.Bytes;
 
 import pbtest.DataPointProtos.DataPoint;
+import pbtest.DataPointProtos.Header;
 import pbtest.utils.Utils;
 
 import com.google.common.io.Closeables;
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.ProtocolStringList;
 
 
 public class LoadData {
 
 	private static final List<MetricTags> metricTags = new ArrayList<MetricTags>();
-
+	private static ProtocolStringList values;
+	
 	/** Prints usage and exits.  */
 	static void usage() {
 		System.err.println("Usage: load path");
@@ -61,10 +64,14 @@ public class LoadData {
 		DataPoint dataPoint;
 
 		final FileInputStream input = new FileInputStream(path);
-//		final BufferedInputStream in = new BufferedInputStream(input, 102400);
+		
+		// we start by reading the header
+		values = Header.parseDelimitedFrom(input).getValueList();
+
 		final FastDataPointReader reader = new FastDataPointReader(input);
 		
 		while ((dataPoint = reader.read()) != null) {
+			// let's see if we can access the values correctly
 			count++;
 		}
 		

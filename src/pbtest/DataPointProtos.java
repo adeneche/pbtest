@@ -8,23 +8,517 @@ public final class DataPointProtos {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface HeaderOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:pbtest.Header)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated string value = 1;</code>
+     */
+    com.google.protobuf.ProtocolStringList
+        getValueList();
+    /**
+     * <code>repeated string value = 1;</code>
+     */
+    int getValueCount();
+    /**
+     * <code>repeated string value = 1;</code>
+     */
+    java.lang.String getValue(int index);
+    /**
+     * <code>repeated string value = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getValueBytes(int index);
+  }
+  /**
+   * Protobuf type {@code pbtest.Header}
+   */
+  public static final class Header extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:pbtest.Header)
+      HeaderOrBuilder {
+    // Use Header.newBuilder() to construct.
+    private Header(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private Header(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Header defaultInstance;
+    public static Header getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Header getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Header(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                value_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              value_.add(bs);
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          value_ = value_.getUnmodifiableView();
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return pbtest.DataPointProtos.internal_static_pbtest_Header_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return pbtest.DataPointProtos.internal_static_pbtest_Header_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              pbtest.DataPointProtos.Header.class, pbtest.DataPointProtos.Header.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Header> PARSER =
+        new com.google.protobuf.AbstractParser<Header>() {
+      public Header parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Header(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Header> getParserForType() {
+      return PARSER;
+    }
+
+    public static final int VALUE_FIELD_NUMBER = 1;
+    private com.google.protobuf.LazyStringList value_;
+    /**
+     * <code>repeated string value = 1;</code>
+     */
+    public com.google.protobuf.ProtocolStringList
+        getValueList() {
+      return value_;
+    }
+    /**
+     * <code>repeated string value = 1;</code>
+     */
+    public int getValueCount() {
+      return value_.size();
+    }
+    /**
+     * <code>repeated string value = 1;</code>
+     */
+    public java.lang.String getValue(int index) {
+      return value_.get(index);
+    }
+    /**
+     * <code>repeated string value = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getValueBytes(int index) {
+      return value_.getByteString(index);
+    }
+
+    private void initFields() {
+      value_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < value_.size(); i++) {
+        output.writeBytes(1, value_.getByteString(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < value_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(value_.getByteString(i));
+        }
+        size += dataSize;
+        size += 1 * getValueList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static pbtest.DataPointProtos.Header parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static pbtest.DataPointProtos.Header parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static pbtest.DataPointProtos.Header parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static pbtest.DataPointProtos.Header parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static pbtest.DataPointProtos.Header parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static pbtest.DataPointProtos.Header parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static pbtest.DataPointProtos.Header parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static pbtest.DataPointProtos.Header parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static pbtest.DataPointProtos.Header parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static pbtest.DataPointProtos.Header parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(pbtest.DataPointProtos.Header prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code pbtest.Header}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:pbtest.Header)
+        pbtest.DataPointProtos.HeaderOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return pbtest.DataPointProtos.internal_static_pbtest_Header_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return pbtest.DataPointProtos.internal_static_pbtest_Header_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                pbtest.DataPointProtos.Header.class, pbtest.DataPointProtos.Header.Builder.class);
+      }
+
+      // Construct using pbtest.DataPointProtos.Header.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        value_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return pbtest.DataPointProtos.internal_static_pbtest_Header_descriptor;
+      }
+
+      public pbtest.DataPointProtos.Header getDefaultInstanceForType() {
+        return pbtest.DataPointProtos.Header.getDefaultInstance();
+      }
+
+      public pbtest.DataPointProtos.Header build() {
+        pbtest.DataPointProtos.Header result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public pbtest.DataPointProtos.Header buildPartial() {
+        pbtest.DataPointProtos.Header result = new pbtest.DataPointProtos.Header(this);
+        int from_bitField0_ = bitField0_;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          value_ = value_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.value_ = value_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof pbtest.DataPointProtos.Header) {
+          return mergeFrom((pbtest.DataPointProtos.Header)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(pbtest.DataPointProtos.Header other) {
+        if (other == pbtest.DataPointProtos.Header.getDefaultInstance()) return this;
+        if (!other.value_.isEmpty()) {
+          if (value_.isEmpty()) {
+            value_ = other.value_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureValueIsMutable();
+            value_.addAll(other.value_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        pbtest.DataPointProtos.Header parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (pbtest.DataPointProtos.Header) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.LazyStringList value_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureValueIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          value_ = new com.google.protobuf.LazyStringArrayList(value_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <code>repeated string value = 1;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getValueList() {
+        return value_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string value = 1;</code>
+       */
+      public int getValueCount() {
+        return value_.size();
+      }
+      /**
+       * <code>repeated string value = 1;</code>
+       */
+      public java.lang.String getValue(int index) {
+        return value_.get(index);
+      }
+      /**
+       * <code>repeated string value = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getValueBytes(int index) {
+        return value_.getByteString(index);
+      }
+      /**
+       * <code>repeated string value = 1;</code>
+       */
+      public Builder setValue(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureValueIsMutable();
+        value_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string value = 1;</code>
+       */
+      public Builder addValue(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureValueIsMutable();
+        value_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string value = 1;</code>
+       */
+      public Builder addAllValue(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureValueIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, value_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string value = 1;</code>
+       */
+      public Builder clearValue() {
+        value_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string value = 1;</code>
+       */
+      public Builder addValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureValueIsMutable();
+        value_.add(value);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:pbtest.Header)
+    }
+
+    static {
+      defaultInstance = new Header(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:pbtest.Header)
+  }
+
   public interface DataPointOrBuilder extends
       // @@protoc_insertion_point(interface_extends:pbtest.DataPoint)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string metric = 1;</code>
+     * <code>required int32 metric_id = 1;</code>
      */
-    boolean hasMetric();
+    boolean hasMetricId();
     /**
-     * <code>required string metric = 1;</code>
+     * <code>required int32 metric_id = 1;</code>
      */
-    java.lang.String getMetric();
-    /**
-     * <code>required string metric = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getMetricBytes();
+    int getMetricId();
 
     /**
      * <code>required int64 timestamp = 2;</code>
@@ -37,10 +531,18 @@ public final class DataPointProtos {
 
     /**
      * <code>optional float fvalue = 3;</code>
+     *
+     * <pre>
+     * use oneof for {fvalue, ivalue}
+     * </pre>
      */
     boolean hasFvalue();
     /**
      * <code>optional float fvalue = 3;</code>
+     *
+     * <pre>
+     * use oneof for {fvalue, ivalue}
+     * </pre>
      */
     float getFvalue();
 
@@ -55,24 +557,44 @@ public final class DataPointProtos {
 
     /**
      * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+     *
+     * <pre>
+     * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+     * </pre>
      */
     java.util.List<pbtest.DataPointProtos.DataPoint.Tag> 
         getTagList();
     /**
      * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+     *
+     * <pre>
+     * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+     * </pre>
      */
     pbtest.DataPointProtos.DataPoint.Tag getTag(int index);
     /**
      * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+     *
+     * <pre>
+     * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+     * </pre>
      */
     int getTagCount();
     /**
      * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+     *
+     * <pre>
+     * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+     * </pre>
      */
     java.util.List<? extends pbtest.DataPointProtos.DataPoint.TagOrBuilder> 
         getTagOrBuilderList();
     /**
      * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+     *
+     * <pre>
+     * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+     * </pre>
      */
     pbtest.DataPointProtos.DataPoint.TagOrBuilder getTagOrBuilder(
         int index);
@@ -129,10 +651,9 @@ public final class DataPointProtos {
               }
               break;
             }
-            case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+            case 8: {
               bitField0_ |= 0x00000001;
-              metric_ = bs;
+              metricId_ = input.readInt32();
               break;
             }
             case 16: {
@@ -205,32 +726,22 @@ public final class DataPointProtos {
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>required string key = 1;</code>
+       * <code>required int32 key_id = 1;</code>
        */
-      boolean hasKey();
+      boolean hasKeyId();
       /**
-       * <code>required string key = 1;</code>
+       * <code>required int32 key_id = 1;</code>
        */
-      java.lang.String getKey();
-      /**
-       * <code>required string key = 1;</code>
-       */
-      com.google.protobuf.ByteString
-          getKeyBytes();
+      int getKeyId();
 
       /**
-       * <code>required string value = 2;</code>
+       * <code>required int32 value_id = 2;</code>
        */
-      boolean hasValue();
+      boolean hasValueId();
       /**
-       * <code>required string value = 2;</code>
+       * <code>required int32 value_id = 2;</code>
        */
-      java.lang.String getValue();
-      /**
-       * <code>required string value = 2;</code>
-       */
-      com.google.protobuf.ByteString
-          getValueBytes();
+      int getValueId();
     }
     /**
      * Protobuf type {@code pbtest.DataPoint.Tag}
@@ -284,16 +795,14 @@ public final class DataPointProtos {
                 }
                 break;
               }
-              case 10: {
-                com.google.protobuf.ByteString bs = input.readBytes();
+              case 8: {
                 bitField0_ |= 0x00000001;
-                key_ = bs;
+                keyId_ = input.readInt32();
                 break;
               }
-              case 18: {
-                com.google.protobuf.ByteString bs = input.readBytes();
+              case 16: {
                 bitField0_ |= 0x00000002;
-                value_ = bs;
+                valueId_ = input.readInt32();
                 break;
               }
             }
@@ -336,93 +845,39 @@ public final class DataPointProtos {
       }
 
       private int bitField0_;
-      public static final int KEY_FIELD_NUMBER = 1;
-      private java.lang.Object key_;
+      public static final int KEY_ID_FIELD_NUMBER = 1;
+      private int keyId_;
       /**
-       * <code>required string key = 1;</code>
+       * <code>required int32 key_id = 1;</code>
        */
-      public boolean hasKey() {
+      public boolean hasKeyId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string key = 1;</code>
+       * <code>required int32 key_id = 1;</code>
        */
-      public java.lang.String getKey() {
-        java.lang.Object ref = key_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            key_ = s;
-          }
-          return s;
-        }
-      }
-      /**
-       * <code>required string key = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getKeyBytes() {
-        java.lang.Object ref = key_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          key_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+      public int getKeyId() {
+        return keyId_;
       }
 
-      public static final int VALUE_FIELD_NUMBER = 2;
-      private java.lang.Object value_;
+      public static final int VALUE_ID_FIELD_NUMBER = 2;
+      private int valueId_;
       /**
-       * <code>required string value = 2;</code>
+       * <code>required int32 value_id = 2;</code>
        */
-      public boolean hasValue() {
+      public boolean hasValueId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required string value = 2;</code>
+       * <code>required int32 value_id = 2;</code>
        */
-      public java.lang.String getValue() {
-        java.lang.Object ref = value_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            value_ = s;
-          }
-          return s;
-        }
-      }
-      /**
-       * <code>required string value = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getValueBytes() {
-        java.lang.Object ref = value_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          value_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+      public int getValueId() {
+        return valueId_;
       }
 
       private void initFields() {
-        key_ = "";
-        value_ = "";
+        keyId_ = 0;
+        valueId_ = 0;
       }
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
@@ -430,11 +885,11 @@ public final class DataPointProtos {
         if (isInitialized == 1) return true;
         if (isInitialized == 0) return false;
 
-        if (!hasKey()) {
+        if (!hasKeyId()) {
           memoizedIsInitialized = 0;
           return false;
         }
-        if (!hasValue()) {
+        if (!hasValueId()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -446,10 +901,10 @@ public final class DataPointProtos {
                           throws java.io.IOException {
         getSerializedSize();
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBytes(1, getKeyBytes());
+          output.writeInt32(1, keyId_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeBytes(2, getValueBytes());
+          output.writeInt32(2, valueId_);
         }
         getUnknownFields().writeTo(output);
       }
@@ -462,11 +917,11 @@ public final class DataPointProtos {
         size = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, getKeyBytes());
+            .computeInt32Size(1, keyId_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(2, getValueBytes());
+            .computeInt32Size(2, valueId_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSerializedSize = size;
@@ -585,9 +1040,9 @@ public final class DataPointProtos {
 
         public Builder clear() {
           super.clear();
-          key_ = "";
+          keyId_ = 0;
           bitField0_ = (bitField0_ & ~0x00000001);
-          value_ = "";
+          valueId_ = 0;
           bitField0_ = (bitField0_ & ~0x00000002);
           return this;
         }
@@ -620,11 +1075,11 @@ public final class DataPointProtos {
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
             to_bitField0_ |= 0x00000001;
           }
-          result.key_ = key_;
+          result.keyId_ = keyId_;
           if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
             to_bitField0_ |= 0x00000002;
           }
-          result.value_ = value_;
+          result.valueId_ = valueId_;
           result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
@@ -641,26 +1096,22 @@ public final class DataPointProtos {
 
         public Builder mergeFrom(pbtest.DataPointProtos.DataPoint.Tag other) {
           if (other == pbtest.DataPointProtos.DataPoint.Tag.getDefaultInstance()) return this;
-          if (other.hasKey()) {
-            bitField0_ |= 0x00000001;
-            key_ = other.key_;
-            onChanged();
+          if (other.hasKeyId()) {
+            setKeyId(other.getKeyId());
           }
-          if (other.hasValue()) {
-            bitField0_ |= 0x00000002;
-            value_ = other.value_;
-            onChanged();
+          if (other.hasValueId()) {
+            setValueId(other.getValueId());
           }
           this.mergeUnknownFields(other.getUnknownFields());
           return this;
         }
 
         public final boolean isInitialized() {
-          if (!hasKey()) {
+          if (!hasKeyId()) {
             
             return false;
           }
-          if (!hasValue()) {
+          if (!hasValueId()) {
             
             return false;
           }
@@ -686,154 +1137,66 @@ public final class DataPointProtos {
         }
         private int bitField0_;
 
-        private java.lang.Object key_ = "";
+        private int keyId_ ;
         /**
-         * <code>required string key = 1;</code>
+         * <code>required int32 key_id = 1;</code>
          */
-        public boolean hasKey() {
+        public boolean hasKeyId() {
           return ((bitField0_ & 0x00000001) == 0x00000001);
         }
         /**
-         * <code>required string key = 1;</code>
+         * <code>required int32 key_id = 1;</code>
          */
-        public java.lang.String getKey() {
-          java.lang.Object ref = key_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            if (bs.isValidUtf8()) {
-              key_ = s;
-            }
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
+        public int getKeyId() {
+          return keyId_;
         }
         /**
-         * <code>required string key = 1;</code>
+         * <code>required int32 key_id = 1;</code>
          */
-        public com.google.protobuf.ByteString
-            getKeyBytes() {
-          java.lang.Object ref = key_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            key_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>required string key = 1;</code>
-         */
-        public Builder setKey(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-          key_ = value;
+        public Builder setKeyId(int value) {
+          bitField0_ |= 0x00000001;
+          keyId_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>required string key = 1;</code>
+         * <code>required int32 key_id = 1;</code>
          */
-        public Builder clearKey() {
+        public Builder clearKeyId() {
           bitField0_ = (bitField0_ & ~0x00000001);
-          key_ = getDefaultInstance().getKey();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>required string key = 1;</code>
-         */
-        public Builder setKeyBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-          key_ = value;
+          keyId_ = 0;
           onChanged();
           return this;
         }
 
-        private java.lang.Object value_ = "";
+        private int valueId_ ;
         /**
-         * <code>required string value = 2;</code>
+         * <code>required int32 value_id = 2;</code>
          */
-        public boolean hasValue() {
+        public boolean hasValueId() {
           return ((bitField0_ & 0x00000002) == 0x00000002);
         }
         /**
-         * <code>required string value = 2;</code>
+         * <code>required int32 value_id = 2;</code>
          */
-        public java.lang.String getValue() {
-          java.lang.Object ref = value_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            if (bs.isValidUtf8()) {
-              value_ = s;
-            }
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
+        public int getValueId() {
+          return valueId_;
         }
         /**
-         * <code>required string value = 2;</code>
+         * <code>required int32 value_id = 2;</code>
          */
-        public com.google.protobuf.ByteString
-            getValueBytes() {
-          java.lang.Object ref = value_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            value_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>required string value = 2;</code>
-         */
-        public Builder setValue(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-          value_ = value;
+        public Builder setValueId(int value) {
+          bitField0_ |= 0x00000002;
+          valueId_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>required string value = 2;</code>
+         * <code>required int32 value_id = 2;</code>
          */
-        public Builder clearValue() {
+        public Builder clearValueId() {
           bitField0_ = (bitField0_ & ~0x00000002);
-          value_ = getDefaultInstance().getValue();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>required string value = 2;</code>
-         */
-        public Builder setValueBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-          value_ = value;
+          valueId_ = 0;
           onChanged();
           return this;
         }
@@ -850,46 +1213,19 @@ public final class DataPointProtos {
     }
 
     private int bitField0_;
-    public static final int METRIC_FIELD_NUMBER = 1;
-    private java.lang.Object metric_;
+    public static final int METRIC_ID_FIELD_NUMBER = 1;
+    private int metricId_;
     /**
-     * <code>required string metric = 1;</code>
+     * <code>required int32 metric_id = 1;</code>
      */
-    public boolean hasMetric() {
+    public boolean hasMetricId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string metric = 1;</code>
+     * <code>required int32 metric_id = 1;</code>
      */
-    public java.lang.String getMetric() {
-      java.lang.Object ref = metric_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          metric_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string metric = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getMetricBytes() {
-      java.lang.Object ref = metric_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        metric_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getMetricId() {
+      return metricId_;
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 2;
@@ -911,12 +1247,20 @@ public final class DataPointProtos {
     private float fvalue_;
     /**
      * <code>optional float fvalue = 3;</code>
+     *
+     * <pre>
+     * use oneof for {fvalue, ivalue}
+     * </pre>
      */
     public boolean hasFvalue() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional float fvalue = 3;</code>
+     *
+     * <pre>
+     * use oneof for {fvalue, ivalue}
+     * </pre>
      */
     public float getFvalue() {
       return fvalue_;
@@ -941,12 +1285,20 @@ public final class DataPointProtos {
     private java.util.List<pbtest.DataPointProtos.DataPoint.Tag> tag_;
     /**
      * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+     *
+     * <pre>
+     * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+     * </pre>
      */
     public java.util.List<pbtest.DataPointProtos.DataPoint.Tag> getTagList() {
       return tag_;
     }
     /**
      * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+     *
+     * <pre>
+     * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+     * </pre>
      */
     public java.util.List<? extends pbtest.DataPointProtos.DataPoint.TagOrBuilder> 
         getTagOrBuilderList() {
@@ -954,18 +1306,30 @@ public final class DataPointProtos {
     }
     /**
      * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+     *
+     * <pre>
+     * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+     * </pre>
      */
     public int getTagCount() {
       return tag_.size();
     }
     /**
      * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+     *
+     * <pre>
+     * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+     * </pre>
      */
     public pbtest.DataPointProtos.DataPoint.Tag getTag(int index) {
       return tag_.get(index);
     }
     /**
      * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+     *
+     * <pre>
+     * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+     * </pre>
      */
     public pbtest.DataPointProtos.DataPoint.TagOrBuilder getTagOrBuilder(
         int index) {
@@ -973,7 +1337,7 @@ public final class DataPointProtos {
     }
 
     private void initFields() {
-      metric_ = "";
+      metricId_ = 0;
       timestamp_ = 0L;
       fvalue_ = 0F;
       ivalue_ = 0;
@@ -985,7 +1349,7 @@ public final class DataPointProtos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasMetric()) {
+      if (!hasMetricId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1007,7 +1371,7 @@ public final class DataPointProtos {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getMetricBytes());
+        output.writeInt32(1, metricId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt64(2, timestamp_);
@@ -1032,7 +1396,7 @@ public final class DataPointProtos {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getMetricBytes());
+          .computeInt32Size(1, metricId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1168,7 +1532,7 @@ public final class DataPointProtos {
 
       public Builder clear() {
         super.clear();
-        metric_ = "";
+        metricId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         timestamp_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -1213,7 +1577,7 @@ public final class DataPointProtos {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.metric_ = metric_;
+        result.metricId_ = metricId_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -1251,10 +1615,8 @@ public final class DataPointProtos {
 
       public Builder mergeFrom(pbtest.DataPointProtos.DataPoint other) {
         if (other == pbtest.DataPointProtos.DataPoint.getDefaultInstance()) return this;
-        if (other.hasMetric()) {
-          bitField0_ |= 0x00000001;
-          metric_ = other.metric_;
-          onChanged();
+        if (other.hasMetricId()) {
+          setMetricId(other.getMetricId());
         }
         if (other.hasTimestamp()) {
           setTimestamp(other.getTimestamp());
@@ -1296,7 +1658,7 @@ public final class DataPointProtos {
       }
 
       public final boolean isInitialized() {
-        if (!hasMetric()) {
+        if (!hasMetricId()) {
           
           return false;
         }
@@ -1332,78 +1694,34 @@ public final class DataPointProtos {
       }
       private int bitField0_;
 
-      private java.lang.Object metric_ = "";
+      private int metricId_ ;
       /**
-       * <code>required string metric = 1;</code>
+       * <code>required int32 metric_id = 1;</code>
        */
-      public boolean hasMetric() {
+      public boolean hasMetricId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string metric = 1;</code>
+       * <code>required int32 metric_id = 1;</code>
        */
-      public java.lang.String getMetric() {
-        java.lang.Object ref = metric_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            metric_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getMetricId() {
+        return metricId_;
       }
       /**
-       * <code>required string metric = 1;</code>
+       * <code>required int32 metric_id = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getMetricBytes() {
-        java.lang.Object ref = metric_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          metric_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string metric = 1;</code>
-       */
-      public Builder setMetric(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        metric_ = value;
+      public Builder setMetricId(int value) {
+        bitField0_ |= 0x00000001;
+        metricId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string metric = 1;</code>
+       * <code>required int32 metric_id = 1;</code>
        */
-      public Builder clearMetric() {
+      public Builder clearMetricId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        metric_ = getDefaultInstance().getMetric();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string metric = 1;</code>
-       */
-      public Builder setMetricBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        metric_ = value;
+        metricId_ = 0;
         onChanged();
         return this;
       }
@@ -1443,18 +1761,30 @@ public final class DataPointProtos {
       private float fvalue_ ;
       /**
        * <code>optional float fvalue = 3;</code>
+       *
+       * <pre>
+       * use oneof for {fvalue, ivalue}
+       * </pre>
        */
       public boolean hasFvalue() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional float fvalue = 3;</code>
+       *
+       * <pre>
+       * use oneof for {fvalue, ivalue}
+       * </pre>
        */
       public float getFvalue() {
         return fvalue_;
       }
       /**
        * <code>optional float fvalue = 3;</code>
+       *
+       * <pre>
+       * use oneof for {fvalue, ivalue}
+       * </pre>
        */
       public Builder setFvalue(float value) {
         bitField0_ |= 0x00000004;
@@ -1464,6 +1794,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>optional float fvalue = 3;</code>
+       *
+       * <pre>
+       * use oneof for {fvalue, ivalue}
+       * </pre>
        */
       public Builder clearFvalue() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -1518,6 +1852,10 @@ public final class DataPointProtos {
 
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public java.util.List<pbtest.DataPointProtos.DataPoint.Tag> getTagList() {
         if (tagBuilder_ == null) {
@@ -1528,6 +1866,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public int getTagCount() {
         if (tagBuilder_ == null) {
@@ -1538,6 +1880,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public pbtest.DataPointProtos.DataPoint.Tag getTag(int index) {
         if (tagBuilder_ == null) {
@@ -1548,6 +1894,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public Builder setTag(
           int index, pbtest.DataPointProtos.DataPoint.Tag value) {
@@ -1565,6 +1915,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public Builder setTag(
           int index, pbtest.DataPointProtos.DataPoint.Tag.Builder builderForValue) {
@@ -1579,6 +1933,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public Builder addTag(pbtest.DataPointProtos.DataPoint.Tag value) {
         if (tagBuilder_ == null) {
@@ -1595,6 +1953,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public Builder addTag(
           int index, pbtest.DataPointProtos.DataPoint.Tag value) {
@@ -1612,6 +1974,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public Builder addTag(
           pbtest.DataPointProtos.DataPoint.Tag.Builder builderForValue) {
@@ -1626,6 +1992,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public Builder addTag(
           int index, pbtest.DataPointProtos.DataPoint.Tag.Builder builderForValue) {
@@ -1640,6 +2010,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public Builder addAllTag(
           java.lang.Iterable<? extends pbtest.DataPointProtos.DataPoint.Tag> values) {
@@ -1655,6 +2029,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public Builder clearTag() {
         if (tagBuilder_ == null) {
@@ -1668,6 +2046,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public Builder removeTag(int index) {
         if (tagBuilder_ == null) {
@@ -1681,6 +2063,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public pbtest.DataPointProtos.DataPoint.Tag.Builder getTagBuilder(
           int index) {
@@ -1688,6 +2074,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public pbtest.DataPointProtos.DataPoint.TagOrBuilder getTagOrBuilder(
           int index) {
@@ -1698,6 +2088,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public java.util.List<? extends pbtest.DataPointProtos.DataPoint.TagOrBuilder> 
            getTagOrBuilderList() {
@@ -1709,6 +2103,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public pbtest.DataPointProtos.DataPoint.Tag.Builder addTagBuilder() {
         return getTagFieldBuilder().addBuilder(
@@ -1716,6 +2114,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public pbtest.DataPointProtos.DataPoint.Tag.Builder addTagBuilder(
           int index) {
@@ -1724,6 +2126,10 @@ public final class DataPointProtos {
       }
       /**
        * <code>repeated .pbtest.DataPoint.Tag tag = 5;</code>
+       *
+       * <pre>
+       * should we use repeated int32 key_ids [packed=true] and repeated int32 value_ids [packed=true] instead ?
+       * </pre>
        */
       public java.util.List<pbtest.DataPointProtos.DataPoint.Tag.Builder> 
            getTagBuilderList() {
@@ -1756,6 +2162,11 @@ public final class DataPointProtos {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_pbtest_Header_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_pbtest_Header_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_pbtest_DataPoint_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -1774,11 +2185,12 @@ public final class DataPointProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\017datapoint.proto\022\006pbtest\"\225\001\n\tDataPoint\022" +
-      "\016\n\006metric\030\001 \002(\t\022\021\n\ttimestamp\030\002 \002(\003\022\016\n\006fv" +
-      "alue\030\003 \001(\002\022\016\n\006ivalue\030\004 \001(\021\022\"\n\003tag\030\005 \003(\0132" +
-      "\025.pbtest.DataPoint.Tag\032!\n\003Tag\022\013\n\003key\030\001 \002" +
-      "(\t\022\r\n\005value\030\002 \002(\tB\021B\017DataPointProtos"
+      "\n\017datapoint.proto\022\006pbtest\"\027\n\006Header\022\r\n\005v" +
+      "alue\030\001 \003(\t\"\236\001\n\tDataPoint\022\021\n\tmetric_id\030\001 " +
+      "\002(\005\022\021\n\ttimestamp\030\002 \002(\003\022\016\n\006fvalue\030\003 \001(\002\022\016" +
+      "\n\006ivalue\030\004 \001(\021\022\"\n\003tag\030\005 \003(\0132\025.pbtest.Dat" +
+      "aPoint.Tag\032\'\n\003Tag\022\016\n\006key_id\030\001 \002(\005\022\020\n\010val" +
+      "ue_id\030\002 \002(\005B\021B\017DataPointProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1792,18 +2204,24 @@ public final class DataPointProtos {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_pbtest_DataPoint_descriptor =
+    internal_static_pbtest_Header_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_pbtest_Header_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_pbtest_Header_descriptor,
+        new java.lang.String[] { "Value", });
+    internal_static_pbtest_DataPoint_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_pbtest_DataPoint_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_pbtest_DataPoint_descriptor,
-        new java.lang.String[] { "Metric", "Timestamp", "Fvalue", "Ivalue", "Tag", });
+        new java.lang.String[] { "MetricId", "Timestamp", "Fvalue", "Ivalue", "Tag", });
     internal_static_pbtest_DataPoint_Tag_descriptor =
       internal_static_pbtest_DataPoint_descriptor.getNestedTypes().get(0);
     internal_static_pbtest_DataPoint_Tag_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_pbtest_DataPoint_Tag_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        new java.lang.String[] { "KeyId", "ValueId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

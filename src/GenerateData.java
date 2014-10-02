@@ -6,13 +6,18 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
 import pbtest.DataPointProtos.DataPoint;
+import pbtest.DataPointProtos.Header;
 
 public class GenerateData {
 
+	private static List<String> values = new ArrayList<>();
+	
 	/** Prints usage and exits.  */
 	static void usage() {
 		System.err.println("Usage: generate metric [num-days] [pph] [--tsd]");
@@ -87,6 +92,11 @@ public class GenerateData {
 		final String extension = toTSD ? ".tsd" : ".pb";
 		File metricFile = new File("" + metricName + extension);
 		OutputStream os = createOutputStream(!toTSD, metricFile);
+		
+		// if we are using a binary format, write the header first
+		if (!toTSD) {
+			WriteHeader(os, metricName, numTagK, numTagV);
+		}
 
 		long time = (pph > 3600) ? cal.getTimeInMillis() : cal.getTimeInMillis() / 1000;
 		int time_inc = (pph > 3600) ? 3600000 / pph : 3600 / pph;
@@ -105,7 +115,7 @@ public class GenerateData {
 					if (toTSD)
 						writeTSDRecord(os, mname, time, value, tagValues);
 					else
-						writeRecord(os, mname, time, value, tagValues);
+						WriteRecord(os, mname, time, value, tagValues);
 					// Alter the value by a range of +/- RANDOM_GAP
 					value += rand.nextInt(range) - gap;
 
@@ -127,25 +137,43 @@ public class GenerateData {
 	private static OutputStream createOutputStream(boolean binary, File path) throws IOException {
 		FileOutputStream fos = new FileOutputStream(path);
 
-//		if (!binary) {
-			return new BufferedOutputStream(fos);
-//		}
-
-//		return fos;
+		return new BufferedOutputStream(fos);
+	}
+	
+	static void WriteHeader(final OutputStream os, final String metricName, final int numTagK, final int numTagV) throws IOException {
+		values.add(metricName);
+		for (int k = 0; k < numTagK; k++) {
+			values.add("tag"+k);
+		}
+		for (int v = 0; v < numTagV; v++) {
+			values.add("value"+v);
+		}
+		
+		Header.Builder header = Header.newBuilder();
+		header.addAllValue(values);
+		
+		header.build().writeDelimitedTo(os);
 	}
 
-	private static void writeRecord(OutputStream os, String metricName, long time, int value, int[] tagValues) throws IOException {
+	static int GetValueId(final String value) {
+		int id = values.indexOf(value);
+		if (id < 0) throw new IllegalArgumentException("could not find value id for: "+value);
+		return id;
+	}
+	
+	static void WriteRecord(OutputStream os, String metricName, long time, int value, int[] tagValues) throws IOException {
 		DataOutputStream dout = new DataOutputStream(os);
 		
 		DataPoint.Builder dataPoint = DataPoint.newBuilder();
 		dataPoint
-		.setMetric(metricName)
+		.setMetricId(GetValueId(metricName))
 		.setTimestamp(time)
 		.setIvalue(value);
 
 		for (int i = 0; i < tagValues.length; i++) {
 			DataPoint.Tag.Builder tag = DataPoint.Tag.newBuilder();
-			tag.setKey("tag"+i).setValue("value"+tagValues[i]);
+			tag.setKeyId(GetValueId("tag"+i));
+			tag.setValueId(GetValueId("value"+tagValues[i]));
 
 			dataPoint.addTag(tag);
 		}
