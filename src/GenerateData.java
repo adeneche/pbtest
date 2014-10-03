@@ -20,7 +20,7 @@ public class GenerateData {
 	
 	/** Prints usage and exits.  */
 	static void usage() {
-		System.err.println("Usage: generate metric [num-days] [pph] [--tsd]");
+		System.err.println("Usage: generate metric [num-days] [pph]");
 		System.exit(-1);
 	}
 
@@ -32,7 +32,6 @@ public class GenerateData {
 		String metricName = args[0];
 		int days = 1;
 		int pph = 3600;
-		boolean toTSD = false;
 
 		if (args.length > 1) {
 			try {
@@ -58,18 +57,11 @@ public class GenerateData {
 				usage();
 			}
 		}
-		if (args.length > 3) {
-			if ("--tsd".equals(args[3])) {
-				toTSD = true;
-			} else {
-				usage();
-			}
-		}
 
-		generateYearlyFiles(metricName, days, pph, toTSD, new Random());
+		generateYearlyFiles(metricName, days, pph);
 	}
 
-	public static void generateYearlyFiles(final String metricName, final int days, final int pph, final boolean toTSD, final Random rand) throws IOException {
+	public static void generateYearlyFiles(final String metricName, final int days, final int pph) throws IOException {
 		// consts
 		int numMetrics = 1;
 		int numTagK = 1;
@@ -82,6 +74,8 @@ public class GenerateData {
 		Calendar cal = Calendar.getInstance(); // use local timezone
 		cal.set(startYear, 0, 1, 0, 0, 0);
 
+		final Random rand = new Random();
+		
 		int value = rand.nextInt(range) - gap;
 		long count = 0;
 
@@ -89,14 +83,10 @@ public class GenerateData {
 
 		long startTime = System.currentTimeMillis();
 
-		final String extension = toTSD ? ".tsd" : ".pb";
-		File metricFile = new File("" + metricName + extension);
-		OutputStream os = createOutputStream(!toTSD, metricFile);
+		File metricFile = new File("" + metricName + ".pb");
+		OutputStream os = createOutputStream(metricFile);
 		
-		// if we are using a binary format, write the header first
-		if (!toTSD) {
-			WriteHeader(os, metricName, numTagK, numTagV);
-		}
+		WriteHeader(os, metricName, numTagK, numTagV);
 
 		long time = (pph > 3600) ? cal.getTimeInMillis() : cal.getTimeInMillis() / 1000;
 		int time_inc = (pph > 3600) ? 3600000 / pph : 3600 / pph;
@@ -112,10 +102,8 @@ public class GenerateData {
 
 					final String mname = metricName + ((numMetrics > 1) ? "." + rand.nextInt(numMetrics) : "");
 
-					if (toTSD)
-						writeTSDRecord(os, mname, time, value, tagValues);
-					else
-						WriteRecord(os, mname, time, value, tagValues);
+					WriteRecord(os, mname, time, value, tagValues);
+
 					// Alter the value by a range of +/- RANDOM_GAP
 					value += rand.nextInt(range) - gap;
 
@@ -134,7 +122,7 @@ public class GenerateData {
 		System.out.printf("Total time to create %d data points: %dms\n", count, totalTime);
 	}
 
-	private static OutputStream createOutputStream(boolean binary, File path) throws IOException {
+	private static OutputStream createOutputStream(File path) throws IOException {
 		FileOutputStream fos = new FileOutputStream(path);
 
 		return new BufferedOutputStream(fos);
@@ -182,27 +170,5 @@ public class GenerateData {
 		int size = dp.getSerializedSize();
 		dout.writeShort(size);
 		dp.writeTo(os);
-	}
-
-	private static void writeTSDRecord(OutputStream os, String metricName, long time, int value, int[] tagValues) throws IOException {
-		StringBuffer record = new StringBuffer();
-		record.append(metricName)
-		.append(" ")
-		.append(time)
-		.append(" ")
-		.append(value);
-
-		for (int v = 0; v < tagValues.length; v++) {
-			record.append(" ")
-			.append("tag")
-			.append(v)
-			.append("=")
-			.append("value")
-			.append(tagValues[v]);
-		}
-
-		record.append("\n");
-
-		os.write(record.toString().getBytes());
 	}
 }

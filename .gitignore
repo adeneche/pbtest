@@ -4,3 +4,4 @@ bin
 *.pb
 *.tsd
 .settings
+testpb.jar
