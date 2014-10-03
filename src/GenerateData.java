@@ -5,7 +5,6 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -84,7 +83,7 @@ public class GenerateData {
 		long startTime = System.currentTimeMillis();
 
 		File metricFile = new File("" + metricName + ".pb");
-		OutputStream os = createOutputStream(metricFile);
+		DataOutputStream os = createOutputStream(metricFile);
 		
 		WriteHeader(os, metricName, numTagK, numTagV);
 
@@ -122,13 +121,13 @@ public class GenerateData {
 		System.out.printf("Total time to create %d data points: %dms\n", count, totalTime);
 	}
 
-	private static OutputStream createOutputStream(File path) throws IOException {
+	private static DataOutputStream createOutputStream(File path) throws IOException {
 		FileOutputStream fos = new FileOutputStream(path);
 
-		return new BufferedOutputStream(fos);
+		return new DataOutputStream(new BufferedOutputStream(fos));
 	}
 	
-	static void WriteHeader(final OutputStream os, final String metricName, final int numTagK, final int numTagV) throws IOException {
+	static void WriteHeader(final DataOutputStream dout, final String metricName, final int numTagK, final int numTagV) throws IOException {
 		values.add(metricName);
 		for (int k = 0; k < numTagK; k++) {
 			values.add("tag"+k);
@@ -140,7 +139,10 @@ public class GenerateData {
 		Header.Builder header = Header.newBuilder();
 		header.addAllValue(values);
 		
-		header.build().writeDelimitedTo(os);
+		Header head = header.build();
+		int size = head.getSerializedSize();
+		dout.writeShort(size);
+		head.writeTo(dout);
 	}
 
 	static int GetValueId(final String value) {
@@ -149,8 +151,7 @@ public class GenerateData {
 		return id;
 	}
 	
-	static void WriteRecord(OutputStream os, String metricName, long time, int value, int[] tagValues) throws IOException {
-		DataOutputStream dout = new DataOutputStream(os);
+	static void WriteRecord(DataOutputStream dout, String metricName, long time, int value, int[] tagValues) throws IOException {
 		
 		DataPoint.Builder dataPoint = DataPoint.newBuilder();
 		dataPoint
@@ -169,6 +170,6 @@ public class GenerateData {
 		DataPoint dp = dataPoint.build();
 		int size = dp.getSerializedSize();
 		dout.writeShort(size);
-		dp.writeTo(os);
+		dp.writeTo(dout);
 	}
 }
